@@ -52,4 +52,12 @@ public class UsuarioDTO {
 		this.telefono = telefono;
 	}
 
+	@Override
+	public String toString() {
+		return "UsuarioDTO [nombre=" + nombre + ", apellido=" + apellido + ", apellido2=" + apellido2 + ", email="
+				+ email + ", telefono=" + telefono + "]";
+	}
+	
+	
+
 }

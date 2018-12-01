@@ -2,7 +2,9 @@ package com.mysocialweb.template;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public interface Template {
+import com.mysocialweb.base.dao.BaseDao;
+
+public interface TemplateUsuarios extends BaseDao {
 	
 	JdbcTemplate getTemplate();
 }
