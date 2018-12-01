@@ -6,6 +6,10 @@ import com.mysocialweb.model.Usuario;
 
 public interface UsuariosDao{
 
-	List<Usuario> obtenerUsuarios();
+	List<Usuario> findAll();
+
+	void saveOrUpdate(final List<Usuario> usuarios);
+
+	boolean DeleteUser(final List<Usuario> temporal);
 	
 }

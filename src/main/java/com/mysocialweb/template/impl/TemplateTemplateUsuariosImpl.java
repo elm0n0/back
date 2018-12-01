@@ -1,9 +1,12 @@
-package com.mysocialweb.template;
+package com.mysocialweb.template.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public class TemplateImpl implements Template{
+import com.mysocialweb.base.dao.impl.BaseDaoImpl;
+import com.mysocialweb.template.TemplateUsuarios;
+
+public class TemplateTemplateUsuariosImpl extends BaseDaoImpl implements TemplateUsuarios{
 
 	@Autowired
 	private JdbcTemplate template;
