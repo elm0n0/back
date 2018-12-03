@@ -13,10 +13,11 @@ public class BaseDaoImpl implements BaseDao {
 			sb.append(text);
 			sb.append("= ? ");
 			params.add(object);
+			if (needComa) {
+				sb.append(", ");
+			}
 		}
-		if (needComa) {
-			sb.append(", ");
-		}
+		
 	}
 
 	@Override

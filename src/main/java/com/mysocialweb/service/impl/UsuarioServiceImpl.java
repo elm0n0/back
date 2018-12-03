@@ -41,25 +41,29 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public void saveOrUpdate(final String usuariosJson)
-			throws JsonParseException, JsonMappingException, IOException {
+	public void saveOrUpdate(final String usuariosJson) throws JsonParseException, JsonMappingException, IOException {
 		// creamos una instancia del objeto Mapper
 		mapper = new ObjectMapper();
 		// convertimos el String con la lista de usuarios a una lista de usuarios
 		List<Usuario> usuarios = this.mapper.readValue(usuariosJson, new TypeReference<List<Usuario>>() {
 		});
-		// quitamos espacios en blanco 
+		// quitamos espacios en blanco
 		List<Usuario> temporal = new ArrayList<>();
 		for (Usuario actual : usuarios) {
 			Usuario aux = new Usuario();
+
 			aux.setNombre(actual.getNombre().trim());
 			aux.setApellido(actual.getApellido().trim());
-			aux.setApellido2(actual.getApellido2().trim());
+			if (actual.getApellido2() != null) {
+				aux.setApellido2(actual.getApellido2().trim());
+			}
 			aux.setEmail(actual.getEmail().trim());
-			aux.setTelefono(actual.getTelefono().trim());
+			if (actual.getTelefono() != null) {
+				aux.setTelefono(actual.getTelefono().trim());
+			}
 			temporal.add(aux);
 		}
-		logger.info("se van a crear o modificar los siguientes usuarios \r\n {}", temporal.toString());
+		logger.info("se van a crear o modificar los siguientes usuarios \r\n {}", temporal);
 		this.usuariosDao.saveOrUpdate(temporal);
 		logger.info("finalizado el proceso de modificacion o guardado de usuarios");
 	}
@@ -75,19 +79,23 @@ public class UsuarioServiceImpl implements UsuarioService {
 			Usuario aux = new Usuario();
 			aux.setNombre(actual.getNombre().trim());
 			aux.setApellido(actual.getApellido().trim());
-			aux.setApellido2(actual.getApellido2().trim());
+			if (actual.getApellido2() != null) {
+				aux.setApellido2(actual.getApellido2().trim());
+			}
 			aux.setEmail(actual.getEmail().trim());
-			aux.setTelefono(actual.getTelefono().trim());
+			if (actual.getTelefono() != null) {
+				aux.setTelefono(actual.getTelefono().trim());
+			}
 			temporal.add(aux);
 		}
 		logger.info("se van a eliminar los siguientes usuarios \r\n {}", temporal.toString());
 		boolean isEliminado = this.usuariosDao.DeleteUser(temporal);
 		if (isEliminado) {
 			logger.info("se han eliminado correctamente");
-		}else {
+		} else {
 			logger.info("algunos no han sido eliminados");
 		}
-		
+
 	}
 
 }
