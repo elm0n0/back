@@ -5,21 +5,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.mysocialweb.dao.UsuariosDao;
 import com.mysocialweb.model.Usuario;
-import com.mysocialweb.service.impl.UsuarioServiceImpl;
 import com.mysocialweb.template.impl.TemplateTemplateUsuariosImpl;
 
 @Repository
 public class UsuariosDaoImpl extends TemplateTemplateUsuariosImpl implements UsuariosDao {
-
-	private Logger logger = LoggerFactory.getLogger(UsuariosDaoImpl.class);
 	
 	private final RowMapper<Usuario> rowMapUser = new RowMapper<Usuario>() {
 
@@ -38,7 +33,7 @@ public class UsuariosDaoImpl extends TemplateTemplateUsuariosImpl implements Usu
 
 	@Override
 	public List<Usuario> findAll() {
-		String sql = "SELECT id, nombre, apellido, apellido2, email , telefono FROM usuarios.usuarios";
+		String sql = "SELECT id, nombre, apellido, apellido2, email , telefono FROM usuarios";
 		return this.getTemplate().query(sql, rowMapUser);
 	}
 
@@ -46,7 +41,7 @@ public class UsuariosDaoImpl extends TemplateTemplateUsuariosImpl implements Usu
 	public void saveOrUpdate(final List<Usuario> usuarios) {
 
 		StringBuilder sb = new StringBuilder();
-		List<Object> params = new ArrayList<Object>();
+		List<Object> params = new ArrayList<>();
 		for (Usuario actual : usuarios) {
 			// comprobar si existe
 			sb.append("select ");
