@@ -11,10 +11,10 @@ import org.springframework.stereotype.Repository;
 
 import com.mysocialweb.dao.UsuariosDao;
 import com.mysocialweb.model.Usuario;
-import com.mysocialweb.template.impl.TemplateTemplateUsuariosImpl;
+import com.mysocialweb.template.impl.TemplateLspdImpl;
 
 @Repository
-public class UsuariosDaoImpl extends TemplateTemplateUsuariosImpl implements UsuariosDao {
+public class UsuariosDaoImpl extends TemplateLspdImpl implements UsuariosDao {
 	
 	private final RowMapper<Usuario> rowMapUser = new RowMapper<Usuario>() {
 
