@@ -4,7 +4,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.mysocialweb.base.dao.BaseDao;
 
-public interface TemplateUsuarios extends BaseDao {
+public interface TemplateLspd extends BaseDao {
 	
 	JdbcTemplate getTemplate();
 }
